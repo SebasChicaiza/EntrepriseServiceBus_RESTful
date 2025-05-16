@@ -1,33 +1,31 @@
 using Microsoft.AspNetCore.Mvc;
+using AccesoDatos;
+using Logica;
+using AccesoDatos.DTO;
 
 namespace APIGateway.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/productos")]
     public class APIproductoController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        private readonly logicaProductos _logicaProducto = new logicaProductos();
+        [HttpGet] // Ruta específica para obtener los productos
+        public async Task<ActionResult<List<productoDTO>>> Get()
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private readonly ILogger<APIproductoController> _logger;
-
-        public APIproductoController(ILogger<APIproductoController> logger)
-        {
-            _logger = logger;
+            var productos = await _logicaProducto.obtenerProductos();
+            return Ok(productos);
         }
-
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet("buscar")]
+        public async Task<ActionResult<List<productoDTO>>> GetPrdBusqueda([FromQuery] string param, [FromQuery] string buscado)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            List<productoDTO> res = await _logicaProducto.buscarProductosPorParam(param, buscado);
+            return Ok(res);
+        }
+        [HttpGet("{proveedor}/{id}")]
+        public async Task<productoDTO> GetPrd(string proveedor, int id)
+        {
+            return await _logicaProducto.buscarProducto(proveedor, id);
         }
     }
 }

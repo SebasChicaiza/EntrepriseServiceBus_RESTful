@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{1C7E0F2C-3B03-4ACE-888A-8FD8BE4A73F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{A16637B5-4E44-4A77-8FA0-9E87625AF9D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIGateway", "APIGateway\APIGateway.csproj", "{64C388E7-8766-47DB-8957-C8B8EB716829}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{1C7E0F2C-3B03-4ACE-888A-8FD8BE4A73F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7E0F2C-3B03-4ACE-888A-8FD8BE4A73F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7E0F2C-3B03-4ACE-888A-8FD8BE4A73F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A16637B5-4E44-4A77-8FA0-9E87625AF9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A16637B5-4E44-4A77-8FA0-9E87625AF9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A16637B5-4E44-4A77-8FA0-9E87625AF9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A16637B5-4E44-4A77-8FA0-9E87625AF9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C388E7-8766-47DB-8957-C8B8EB716829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C388E7-8766-47DB-8957-C8B8EB716829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C388E7-8766-47DB-8957-C8B8EB716829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C388E7-8766-47DB-8957-C8B8EB716829}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,25 +1,30 @@
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+builder.Services.AddCors(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.AddPolicy("PermitirTodo", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = null; // ? FORZA el respeto del nombre original
+    options.JsonSerializerOptions.DictionaryKeyPolicy = null;  // ? igual para claves de diccionario si usas alguno
+});
 
+builder.Services.AddSwaggerGen();
+var app = builder.Build();
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
+app.UseCors("PermitirTodo");
 app.MapControllers();
+app.UseSwagger(); app.UseSwaggerUI();
+
+
+app.MapGet("/", () => "Hello World!");
 
 app.Run();
